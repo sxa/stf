@@ -32,7 +32,7 @@ public class PlatformFinder {
 		WINDOWS("win"),
 		AIX("aix"),
 		ZOS("zos"),
-		OSX("osx");
+		MACOS("macos");
 		
 		private String shortName;
 		private Platform(String shortName) { this.shortName = shortName; }
@@ -156,7 +156,7 @@ public class PlatformFinder {
 	 * @return a string containing the string without a platform suffix.
 	 */
 	public static String removePlatformSuffix(String str) {
-		return str.replaceAll(".linux$|.win$|.aix$|.zos$|.osx$", "");
+		return str.replaceAll(".linux$|.win$|.aix$|.zos$|.macos$", "");
 	}
 
 
@@ -179,9 +179,9 @@ public class PlatformFinder {
             osShortName = "win";
         }
         
-        // if we are on a Mac use osx as the shortname
+        // if we are on a Mac use macos as the shortname
         if (osName.contains("mac")) {
-            osShortName = "osx";
+            osShortName = "macos";
         }   
                 
         return osShortName;
@@ -273,7 +273,7 @@ public class PlatformFinder {
 		return getPlatform() == Platform.ZOS;
 	}
 	
-	public static boolean isOSX() throws StfException {
-		return getPlatform() == Platform.OSX;
+	public static boolean isMACOS() throws StfException {
+		return getPlatform() == Platform.MACOS;
 	}
 }
